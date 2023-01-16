@@ -1,0 +1,33 @@
+[
+    {
+        "id":1,
+        "name":"Books",
+        "price":10.99,
+        "imgUrl":"/img/1.jpg"
+    },
+    {
+        "id":2,
+        "name":"Computer",
+        "price":12.99,
+        "imgUrl":"/img/2.jpg"
+    },
+    {
+        "id":3,
+        "name":"Mango",
+        "price":0.99,
+        "imgUrl":"/img/6.jpg"
+    },
+    {
+        "id":4,
+        "name":"Glasses",
+        "price":100.99,
+        "imgUrl":"/img/7.jpg"
+    },
+    {
+        "id":4,
+        "name":"Glasses",
+        "price":100.99,
+        "imgUrl":"/img/9.jpg"
+    }
+   
+]
