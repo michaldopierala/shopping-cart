@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button, Container, Nav, Navbar as NavbarBs } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
+import { ShoppingCartContex } from '../contex/ShoppingCartContex'
+// import { useShoppingCart } from '../contex/ShoppingCartContex'
+import ShoppingCart from './components/ShoppingCart'
 
 export default function Navbar() {
+    //    const {openCart, cartQuantity} = useShoppingCart()
+    const { openCart, cartQuantity } = useContext(ShoppingCartContex)
     return (
+
         <NavbarBs sticky='top' className='bg-white shadow-sm mb-3'>
             <Container>
                 <Nav className='me-auto'>
@@ -17,7 +23,9 @@ export default function Navbar() {
                         About
                     </Nav.Link>
                 </Nav>
-                <Button style={{ width: "3rem", height: "3rem", position: "relative" }}
+                <Button
+                onClick={openCart}
+                    style={{ width: "3rem", height: "3rem", position: "relative" }}
                     variant="outline-primaty"
                     className='rounded-circle'>
                     <svg
@@ -35,10 +43,10 @@ export default function Navbar() {
                             position: "absolute",
                             bottom: "0",
                             right: "0",
-                            transform:"translate(25%, 25%)"
+                            transform: "translate(25%, 25%)"
                         }}>
                         3
-                    </div>  
+                    </div>
                 </Button>
 
             </Container>

@@ -10,9 +10,9 @@ import { ShoppingCartProvider } from './contex/ShoppingCartContex'
 
 function App() {
 
-  return (
-<ShoppingCartProvider>
-      <Navbar/>
+  return (<>
+      <ShoppingCartProvider>
+      <Navbar />
       <Container className='mb-4'>
         <Routes>
           <Route path='/' element={<Home />} />
@@ -20,9 +20,10 @@ function App() {
           <Route path='/about' element={<About />} />
         </Routes>
       </Container>
-
       </ShoppingCartProvider>
-  )
+    </>
+
+    )
 }
 
-export default App
+    export default App
