@@ -1,6 +1,7 @@
 import { useContext, createContext, ReactNode, useState } from "react"
 import React from "react"
-import  ShoppingCart  from "../components/ShoppingCart"
+import ShoppingCart from "../components/ShoppingCart"
+import useLocalStorage from "../hooks/useLocalStorage"
 
 
 type ShoppingCartProviderProps = {
@@ -25,18 +26,6 @@ type ShoppingCartContex = {
 
 export const ShoppingCartContex = createContext({} as ShoppingCartContex)
 
-
-
-
-
-
-
-
-
-
-
-
-
 export function useShoppingCart() {
     return useContext(ShoppingCartContex)
 }
@@ -50,13 +39,13 @@ export function useShoppingCart() {
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
     const [isOpen, setIsOpen] = useState(false)
-    const [cartItems, setCartItems] = useState<CartItem[]>([])
+    const [cartItems, setCartItems] = useLocalStorage<CartItem[]>('shopping-cart',[]) 
 
-    const cartQuantity = cartItems.reduce((quantity, item)=> item.quantity + quantity, 0)
-
+    const cartQuantity = cartItems.reduce((quantity, item) => item.quantity + quantity, 0)
 
     const openCart = () => setIsOpen(true)
     const closeCart = () => setIsOpen(false)
+
     function increaseCartQuantity(id: number) {
         setCartItems(currrItems => {
             if (currrItems.find(item => item.id === id) == null) {
@@ -75,7 +64,6 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
     function getItemQuantity(id: number) {
         return cartItems.find(item => item.id === id)?.quantity || 0
-        // return 0
     }
 
     function decreaseCartQuantity(id: number) {
@@ -113,7 +101,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
                 cartQuantity
             }}>
             {children}
-            {/* <ShoppingCart/>git remote add origin  */}
+            <ShoppingCart isOpen={isOpen} />
         </ShoppingCartContex.Provider>
     )
 }

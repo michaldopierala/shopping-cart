@@ -45,7 +45,7 @@ export default function Navbar() {
                             right: "0",
                             transform: "translate(25%, 25%)"
                         }}>
-                        3
+                        {cartQuantity}
                     </div>
                 </Button>
 
